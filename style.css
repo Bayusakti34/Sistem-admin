@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+}
+.container {
+  width: 700px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+form {
+  margin-bottom: 20px;
+}
+input, select, button {
+  padding: 10px;
+  margin-right: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+button {
+  background: #2ecc71;
+  border: none;
+  color: white;
+  cursor: pointer;
+}

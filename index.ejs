@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Pembelian</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Input Pembelian</h2>
+    <form action="/beli" method="POST">
+      <select name="produk_id" required>
+        <% produk.forEach(p => { %>
+          <option value="<%= p.id %>"><%= p.nama %> - Rp<%= p.harga %></option>
+        <% }) %>
+      </select>
+      <input type="number" name="jumlah" placeholder="Jumlah" required min="1">
+      <button type="submit">Beli</button>
+    </form>
+
+    <h2>Riwayat Pembelian</h2>
+    <table>
+      <tr>
+        <th>ID</th><th>Produk</th><th>Jumlah</th><th>Total</th><th>Status</th><th>Tanggal</th><th>Aksi</th>
+      </tr>
+      <% pembelian.forEach(p => { %>
+        <tr>
+          <td><%= p.id %></td>
+          <td><%= p.nama %></td>
+          <td><%= p.jumlah %></td>
+          <td>Rp<%= p.total %></td>
+          <td><%= p.status %></td>
+          <td><%= new Date(p.created_at).toLocaleString() %></td>
+          <td>
+            <% if (p.status === 'dibeli') { %>
+              <form action="/cancel" method="POST" style="display:inline">
+                <input type="hidden" name="id" value="<%= p.id %>">
+                <button type="submit">Cancel</button>
+              </form>
+            <% } %>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  </div>
+</body>
+</html>
